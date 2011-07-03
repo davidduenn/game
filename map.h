@@ -7,7 +7,8 @@ class mapC {
   public:
     mapC();
     bool occupied(int, int);
-    
+    int bordered_by(int, int);
+
   private:
     bool taken[10][10];
 };

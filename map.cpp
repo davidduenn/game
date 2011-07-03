@@ -18,3 +18,17 @@ bool mapC::occupied(int x, int y) {
   return this->taken[x][y];
 }
 
+int mapC::bordered_by(int, int) {
+  // Returns:
+  // 0 if nothing borders
+  // 1 if friendly or rock borders
+  // 2 if enemy borders
+  if() {
+    return 2;
+  } else if() {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
