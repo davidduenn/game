@@ -1,9 +1,10 @@
 #ifndef __UNITS_H__
 #define __UNITS_H__
 
-#include "map.h"
-
 using namespace std;
+
+#include <string>
+#include "map.h"
 
 struct location {
   int x_loc;
@@ -38,21 +39,21 @@ class unitC {
 };
 
 
-class mini: public unitC {
+class miniC: public unitC {
 	public:
-		mini();
+		miniC();
 };
 
 
-class gren: public unitC {
+class grenC: public unitC {
 	public:
-		gren();
+		grenC();
 };
 
 
-class tank: public unitC {
+class tankC: public unitC {
 	public:
-		tank();
+		tankC();
 };
 
 

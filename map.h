@@ -3,14 +3,30 @@
 
 using namespace std;
 
+//#include "units.h"
+
+// Should be in units.h
+enum unitE {
+  empty,
+  tank,
+  mini,
+  gren
+};
+
+struct unit {
+  int army;
+  unitE type;
+  int id;
+};
+
 class mapC {
   public:
     mapC();
-    bool occupied(int, int);
+    unit occupied(int, int);
     int bordered_by(int, int);
 
   private:
-    bool taken[10][10];
+    unit board[10][10];
 };
 
 #endif

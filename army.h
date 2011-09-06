@@ -6,9 +6,9 @@
 class armyC {
   public:
   private:
-    mini mini_array[];
-    gren gren_array[];
-    tank tank_array[];
+    miniC mini_array[];
+    grenC gren_array[];
+    tankC tank_array[];
 };
 
 #endif

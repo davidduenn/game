@@ -1,7 +1,7 @@
 #include <iostream>
 /*
  * This main() creates a fooC which has
- * barC as a public member. The barc of
+ * barC as a public member. The barC of
  * fooC is then used.
  */
 

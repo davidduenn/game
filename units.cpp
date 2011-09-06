@@ -4,7 +4,6 @@
 
 using namespace std;
 
-
 // Name
 void unitC::setName(string new_name) {
 	this->name = new_name;
@@ -17,15 +16,29 @@ string unitC::getName() {
 
 // Health
 void unitC::setHealth(int set) {
-	this->health = set;
+  if(set > 100) {
+    this->health = 100;
+  } else if(set < 0) {
+    this->health = 0;
+  } else {
+    this->health = set;
+  }
 }
 
 void unitC::incHealth(int inc) {
+  cout << "health incrementing\n";
 	this->health += inc;
+  if(this->health > 100) {
+    this->health = 100;
+  }
 }
 
 void unitC::decHealth(int dec) {
+  cout << "health decrementing\n";
 	this->health -= dec;
+  if(this->health < 0) {
+    this->health = 0;
+  }
 }
 
 int unitC::getHealth() {
@@ -41,7 +54,7 @@ bool unitC::isDead() {
 bool unitC::setLocation(int x, int y, mapC map_inst) {
   int x_temp = x;
   int y_temp = y;
-  if(!map_inst.occupied(x_temp, y_temp)) {
+  if(!map_inst.occupied(x_temp, y_temp).army) {
     this->loc.x_loc = x_temp;
     this->loc.y_loc = y_temp;
     return 1;
@@ -74,25 +87,29 @@ void unitC::printUnit() {
 
 // Unit constructor
 unitC::unitC() {
+  cout << "Constructing Unit+++\n";
   setHealth(100);
   setName("default unit");
   setSpeed(0);
 }
 
 // Minigun constructor
-mini::mini() {
+miniC::miniC() {
+  cout << "Constructing Mini+++\n";
   setName("mini-gunner");
 	setSpeed(10);
 }
 
 // Grenader constructor
-gren::gren() {
+grenC::grenC() {
+  cout << "Constructing Gren+++\n";
   setName("grenader");
 	setSpeed(12);
 }
 
 // Tank constructor
-tank::tank() {
+tankC::tankC() {
+  cout << "Constructing Tank+++\n";
   setName("tank");
 	setSpeed(20);
 }
