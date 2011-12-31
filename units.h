@@ -6,11 +6,6 @@ using namespace std;
 #include <string>
 #include "map.h"
 
-struct location {
-  int x_loc;
-  int y_loc;
-};
-
 class unitC {
 	public:
     unitC();
@@ -26,15 +21,12 @@ class unitC {
 		void setSpeed(int);
 		int  getSpeed();
 
-    bool setLocation(int, int, mapC);
-
 		void printUnit();
-	
+
 	private:
 		string name;
 		int health;
 		int speed;
-    struct location loc;
 		int firepower;
 };
 

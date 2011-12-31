@@ -50,19 +50,6 @@ bool unitC::isDead() {
 }
 
 
-// Location
-bool unitC::setLocation(int x, int y, mapC map_inst) {
-  int x_temp = x;
-  int y_temp = y;
-  if(!map_inst.occupied(x_temp, y_temp).army) {
-    this->loc.x_loc = x_temp;
-    this->loc.y_loc = y_temp;
-    return 1;
-  }
-  return 0;
-}
-
-
 // Speed
 void unitC::setSpeed(int new_speed) {
 	this->speed = new_speed;
@@ -76,7 +63,6 @@ int unitC::getSpeed() {
 // Print
 void unitC::printUnit() {
 	cout << "unit: " << this->name << " ------------\n";
-  cout << "location: " << this->loc.x_loc << " " << this->loc.y_loc << endl;
 	cout << "Nominal Speed: " << this->speed << endl;
 	cout << "Real Speed: " << getSpeed() << endl;
 	cout << "Health: " << this->getHealth() << endl;
@@ -87,7 +73,6 @@ void unitC::printUnit() {
 
 // Unit constructor
 unitC::unitC() {
-  cout << "Constructing Unit+++\n";
   setHealth(100);
   setName("default unit");
   setSpeed(0);

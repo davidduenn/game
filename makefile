@@ -19,7 +19,7 @@ run: game
 	clear; ./game > oput.txt
 
 clean:
-	rm*.o
+	rm *.o
 
 nuke:
 	rm *.o game

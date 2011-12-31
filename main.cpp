@@ -6,20 +6,50 @@
 using namespace std;
 
 int main() {
-  mapC map_inst;
-
+  // Construct units
 	miniC mini_inst_1;
 	grenC gren_inst_1;
 	tankC tank_inst_1;
 
-  mini_inst_1.setLocation(9, 9, map_inst);
-  gren_inst_1.setLocation(8, 9, map_inst);
-  tank_inst_1.setLocation(9, 8, map_inst);
-
+  // Print units
 	mini_inst_1.printUnit();
 	gren_inst_1.printUnit();
 	tank_inst_1.printUnit();
 
+  // Construct Map
+  mapC map_inst;
+
+
+  // TODO: Need a way to easily convert
+  // between real units and map_units!!!
+  
+
+  // Create special map_units for map
+  unit_ptrC mini_ptr_1;
+  unit_ptrC gren_ptr_1;
+  unit_ptrC tank_ptr_1;
+
+  mini_ptr_1.setArmy(2);
+  gren_ptr_1.setArmy(3);
+  tank_ptr_1.setArmy(2);
+
+  mini_ptr_1.setType(mini);
+  gren_ptr_1.setType(gren);
+  tank_ptr_1.setType(tank);
+
+  mini_ptr_1.setId(28);
+  gren_ptr_1.setId(30);
+  tank_ptr_1.setId(22);
+
+  // Populate map with map_units
+  map_inst.place_on_map(1, 2, mini_ptr_1);
+  map_inst.place_on_map(2, 2, gren_ptr_1);
+  map_inst.place_on_map(6, 2, tank_ptr_1);
+
+  // Print Map
+  map_inst.print_map();
+
+  // Effect
 	gren_inst_1.incHealth(50);
 	gren_inst_1.printUnit();
 
