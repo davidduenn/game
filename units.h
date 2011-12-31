@@ -31,6 +31,10 @@ class unitC {
 };
 
 
+// This whole declaration of sub-units should work...
+// That means that I should be able to have a single
+// pointer type to point to any of them
+// See ./workspace/ptrs_to_classes.cpp
 class miniC: public unitC {
 	public:
 		miniC();

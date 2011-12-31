@@ -8,6 +8,7 @@
 using namespace std;
 
 
+// Declarations-----------------------------
 class barC {
 	public:
 		int get_Num();
@@ -25,6 +26,7 @@ class fooC {
 };
 
 
+// Definitions--------------------------------
 int barC::get_Num() {
 	return num;
 }
@@ -38,6 +40,7 @@ void fooC::printNothing() {
 }
 
 
+// main()------------------------------------
 int main() {
 	fooC foo_inst;
 	foo_inst.printNothing();

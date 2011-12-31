@@ -5,6 +5,7 @@
 using namespace std;
 
 // Name
+// Probably not needed except for debugging
 void unitC::setName(string new_name) {
 	this->name = new_name;
 }
@@ -46,6 +47,8 @@ int unitC::getHealth() {
 }
 
 bool unitC::isDead() {
+  // Is this needed?
+  // If a unit is dead shouldn't it disappear?
 	return (this->health <= 0);
 }
 

@@ -5,6 +5,8 @@
 
 using namespace std;
 
+//TODO: overload << operator instead of using print() functs.
+
 int main() {
   // Construct units
 	miniC mini_inst_1;

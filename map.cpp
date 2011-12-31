@@ -1,9 +1,6 @@
 #include <iostream>
 #include "map.h"
 
-#define MAP_WIDTH 10
-#define MAP_HEIGHT 10
-
 using namespace std;
 
 /*
