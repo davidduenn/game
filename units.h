@@ -28,6 +28,7 @@ class unitC {
 		int health;
 		int speed;
 		int firepower;
+    //TODO: bool is_damagable (1 for regular. 0 for nature.)
 };
 
 

@@ -14,16 +14,12 @@ using namespace std;
  */
 
 
-//// For unit_ptrC class ////
-// Should this be in it's own cpp file? 
-unit_ptrC::unit_ptrC() {
-  army = 0;
-  type = empty;
-  id = -1;
-}
-
-bool unit_ptrC::operator==(unit_ptrC other_unit) {
-  // Use references instead to avoid copying?
+//// For mapC class ////
+/*
+ * Is this needed? Why would I need to know if two
+ * unit are the same?
+bool mapC::operator==(unitC other_unit) {
+  // TODO: Use references instead to avoid copying?
   if(this->army == other_unit.army) {
     if(this->type == other_unit.type) {
       if(this->id == other_unit.id) {
@@ -33,16 +29,19 @@ bool unit_ptrC::operator==(unit_ptrC other_unit) {
   }
   return 0;
 }
+*/
 
-void unit_ptrC::operator=(unit_ptrC other_unit) {
+/*
+ * Really need to copy units over eachother?
+void mapC::operator=(unitC other_unit) {
   this->army = other_unit.army;
   this->type = other_unit.type;
   this->id = other_unit.id;
 }
+*/
 
 
 
-//// For mapC class ////
 ostream& operator<<(ostream& output, const overloadC& a) {
   for(int i=0; i<MAP_WIDTH; i++) {
     for(int j=0; j<MAP_HEIGHT; j++) {
@@ -57,7 +56,7 @@ ostream& operator<<(ostream& output, const overloadC& a) {
 mapC::mapC() {
   for(int i=0; i<MAP_WIDTH; i++) {
     for(int j=0; j<MAP_HEIGHT; j++) {
-      this->board[i][j] = new unit_ptr;
+      this->board[i][j] = new unitC;
       // Or should this point to null and
       // get pointed to a unit if there is one?
     }
@@ -65,11 +64,10 @@ mapC::mapC() {
 }
 
 // This doesn't do what it seems it should do.
-unit_ptrC mapC::occupied(int x, int y) {
-  if(map[x][y]) { // if pointer at x,y is pointing to null
-    return 1;
-  }
-  return 0;
+unitC mapC::occupied(int x, int y) {
+  // If(exists) {returns pointer to unit}
+  // if(!exists) {returns pointer to NULL}
+  return map[x][y];
 }
 
 /*
@@ -88,7 +86,7 @@ int mapC::bordered_by(int, int, army) {
 }
 */
 
-void mapC::find_and_remove(unit_ptrC unit2move) {
+void mapC::find_and_remove(unitC unit2move) {
   // COULD TAKE A LONG TIME FOR BIG MAPS!!!
   // TODO: optimize
   // Perhaps let the armies remember where the units are
@@ -97,37 +95,36 @@ void mapC::find_and_remove(unit_ptrC unit2move) {
   for(int i=0; i<MAP_WIDTH; i++) {
     for(int j=0; j<MAP_HEIGHT; j++) {
       if(this->board[i][j] == unit2move) {
-        unit_ptrC empty_unit;
-        this->board[i][j] = empty_unit;
+        this->board[i][j] = NULL;
       }
     }
   }
 }
 
-int mapC::move(int x, int y, unit_ptrC unit2move) {
+int mapC::move(int x, int y, unitC unit2move) {
   if(!occupied(x,y)) {
-    find_and_remove(unit2move);
     place_on_map(x, y, unit2move);
+    find_and_remove(unit2move);
   }
 }
 
-void mapC::place_on_map(int x, int y, unit_ptrC* unit2move) {
+void mapC::place_on_map(int x, int y, unitC* unit2move) {
     this->board[x][y] = unit2move;
 }
 
-int unit_ptrC::getArmy() {
-  return this->army;
+int mapC::getArmy(int x, int y) {
+  return this->board[x][y]->army;
 }
 
-void unit_ptrC::setArmy(int army) {
-  this->army = army;
+void mapC::setArmy(int x, int y, int army) {
+  this->board[x][y]->army = army;
 }
 
-void unit_ptrC::setType(unitE type) {
-  this->type = type;
+void mapC::setType(int x, int y, unitE type) {
+  this->board[x][y]->type = type;
 }
 
-void unit_ptrC::setId(int id) {
-  this->id = id;
+void mapC::setId(int x, int y, int id) {
+  this->board[x][y]->id = id;
 }
 

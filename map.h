@@ -28,21 +28,6 @@ enum unitE {
   gren
 };
 
-// This creates one of these unit_ptrC classes at each spot on the board
-// This shouldn't be so. This class is not needed at each spot.
-// Alternatively, there could be the same functions which the map owns.
-// If asked, the map could tell what was happening at any of it's spots.
-class unit_ptrC {
-  public:
-    unit_ptrC();
-    bool operator==(unit_ptrC);
-    void operator=(unit_ptrC);
-
-  private:
-    int army;
-    unitE type;
-    int id;
-};
 
 class mapC {
   // A 2-D array of custom pointers to units
@@ -51,27 +36,28 @@ class mapC {
 
   public:
     mapC();
-    unit_ptrC occupied(int, int);
+    unitC occupied(int, int);
     /*
      * Why is this needed?
     int bordered_by(int, int);
     */
 
-    int move(int, int, unit_ptrC);
-    void place_on_map(int, int, unit_ptrC*);
+    int move(int, int, unitC);
+    void place_on_map(int, int, unitC*);
 
-    int getArmy();
+    int getArmy(int, int);
 
-    void setArmy(int);
-    void setType(unitE);
-    void setId(int);
+    void setArmy(int, int, int);
+    void setType(int, int, unitE);
+    void setId(int, int, int);
 
-    void print_map();
+    //bool operator==(unitC);
+    //void operator=(unitC);
 
   private:
-    unit_ptrC board[MAP_WIDTH][MAP_HEIGHT];
+    unitC board[MAP_WIDTH][MAP_HEIGHT];
 
-    void find_and_remove(unit_ptrC);
+    void find_and_remove(unitC);
 };
 
 #endif
