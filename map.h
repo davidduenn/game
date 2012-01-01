@@ -5,6 +5,8 @@
 
 using namespace std;
 
+#include "units.h"
+
 /*
   Pointers to structs example:
   There is a test program under ./workspace/struct-example.cpp (or somesuch) which has a pointer to a struct
@@ -51,7 +53,7 @@ class mapC {
     void setType(int, int, unitE);
     void setId(int, int, int);
 
-    //bool operator==(unitC);
+    bool operator==(unitC);
     //void operator=(unitC);
 
   private:

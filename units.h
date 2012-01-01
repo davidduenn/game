@@ -4,8 +4,6 @@
 using namespace std;
 
 #include <string>
-// don't include .h files in .h files!!!
-//#include "map.h"
 
 // should the units know their coordinates on the map?
 class unitC {

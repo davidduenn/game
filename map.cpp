@@ -15,21 +15,13 @@ using namespace std;
 
 
 //// For mapC class ////
-/*
- * Is this needed? Why would I need to know if two
- * unit are the same?
 bool mapC::operator==(unitC other_unit) {
   // TODO: Use references instead to avoid copying?
-  if(this->army == other_unit.army) {
-    if(this->type == other_unit.type) {
-      if(this->id == other_unit.id) {
-        return 1;
-      }
-    }
+  if(this->id == other_unit.id) {
+    return 1;
   }
   return 0;
 }
-*/
 
 /*
  * Really need to copy units over eachother?

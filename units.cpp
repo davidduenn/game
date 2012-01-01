@@ -7,11 +7,11 @@ using namespace std;
 
 // print unit
 ostream& operator<<(ostream& output, const unitC& a) {
-	output << "unit: " << a->name << " ------------\n";
-	output << "Nominal Speed: " << a->speed << endl;
-	output << "Real Speed: " << getSpeed() << endl;
-	output << "Health: " << a->getHealth() << endl;
-	output << "Dead: " << a->isDead() << endl;
+	output << "unit: " << a.name << " ------------\n";
+	output << "Nominal Speed: " << a.speed << endl;
+	//output << "Real Speed: " << a.getSpeed() << endl;
+	//output << "Health: " << a.getHealth() << endl;
+	//output << "Dead: " << a.isDead() << endl;
 	output << "----------------\n";
   return output;
 }

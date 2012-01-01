@@ -12,38 +12,34 @@ int main() {
   mapC map_inst;
 
   // Construct units
-  miniC* mini_ptr_1 = new miniC;
-  grenC* gren_ptr_1 = new grenC;
-  tankC* tank_ptr_1 = new tankC;
+  miniC* mini_inst_1 = new miniC;
+  grenC* gren_inst_1 = new grenC;
+  tankC* tank_inst_1 = new tankC;
 
   // Print units
-	mini_inst_1->printUnit();
-	gren_inst_1->printUnit();
-	tank_inst_1->printUnit();
+  cout <<	mini_inst_1 << endl;
+  cout <<	gren_inst_1 << endl;
+  cout <<	tank_inst_1 << endl;
+
+  // Place units on map
+  map_inst.place_on_map(1, 2, mini_inst_1);
+  map_inst.place_on_map(2, 2, gren_inst_1);
+  map_inst.place_on_map(6, 2, tank_inst_1);
 
   // Set units' armies
-  mini_ptr_1->setArmy(2);
-  gren_ptr_1->setArmy(3);
-  tank_ptr_1->setArmy(2);
+  map_inst.setArmy(1, 2, 2);
+  map_inst.setArmy(2, 2, 3);
+  map_inst.setArmy(6, 2, 2);
 
   // Set units' types
-  mini_ptr_1->setType(mini);
-  gren_ptr_1->setType(gren);
-  tank_ptr_1->setType(tank);
+  map_inst.setType(1, 2, mini);
+  map_inst.setType(2, 2, gren);
+  map_inst.setType(6, 2, tank);
 
   // Set units' IDs
-  mini_ptr_1->setId(28);
-  gren_ptr_1->setId(30);
-  tank_ptr_1->setId(22);
-
-  // Populate map with map_units
-  map_inst.place_on_map(1, 2, mini_ptr_1);
-  map_inst.place_on_map(2, 2, gren_ptr_1);
-  map_inst.place_on_map(6, 2, tank_ptr_1);
-  /*
-   * shouldn't touch *_ptr_1 from here on.
-   * everything should be done through map?
-   */
+  map_inst.setId(1, 2, 28);
+  map_inst.setId(2, 2, 30);
+  map_inst.setId(6, 2, 22);
 
   // Print Map
   cout << map_inst << endl;
@@ -58,9 +54,9 @@ int main() {
 	gren_inst_1->decHealth(100);
 	gren_inst_1->printUnit();
 
-  delete miniC;
-  delete grenC;
-  delete tankC;
+  delete mini_inst_1;
+  delete gren_inst_1;
+  delete tank_inst_1;
 
 	return 0;
 }	
