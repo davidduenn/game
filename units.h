@@ -4,9 +4,14 @@
 using namespace std;
 
 #include <string>
-#include "map.h"
+// don't include .h files in .h files!!!
+//#include "map.h"
 
+// should the units know their coordinates on the map?
 class unitC {
+
+  friend ostream& operator<<(ostream&, const unitC&);
+
 	public:
     unitC();
 		void setHealth(int);

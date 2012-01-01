@@ -42,7 +42,7 @@ void mapC::operator=(unitC other_unit) {
 
 
 
-ostream& operator<<(ostream& output, const overloadC& a) {
+ostream& operator<<(ostream& output, const mapC& a) {
   for(int i=0; i<MAP_WIDTH; i++) {
     for(int j=0; j<MAP_HEIGHT; j++) {
       output << a->board[i][j].getArmy() << "\t";

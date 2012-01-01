@@ -4,6 +4,18 @@
 
 using namespace std;
 
+
+// print unit
+ostream& operator<<(ostream& output, const unitC& a) {
+	output << "unit: " << a->name << " ------------\n";
+	output << "Nominal Speed: " << a->speed << endl;
+	output << "Real Speed: " << getSpeed() << endl;
+	output << "Health: " << a->getHealth() << endl;
+	output << "Dead: " << a->isDead() << endl;
+	output << "----------------\n";
+  return output;
+}
+
 // Name
 // Probably not needed except for debugging
 void unitC::setName(string new_name) {
@@ -38,7 +50,7 @@ void unitC::decHealth(int dec) {
   cout << "health decrementing\n";
 	this->health -= dec;
   if(this->health < 0) {
-    this->health = 0;
+    delete this;
   }
 }
 
@@ -60,17 +72,6 @@ void unitC::setSpeed(int new_speed) {
 
 int unitC::getSpeed() {
 	return (this->speed * this->getHealth() / 100);
-}
-
-
-// Print
-void unitC::printUnit() {
-	cout << "unit: " << this->name << " ------------\n";
-	cout << "Nominal Speed: " << this->speed << endl;
-	cout << "Real Speed: " << getSpeed() << endl;
-	cout << "Health: " << this->getHealth() << endl;
-	cout << "Dead: " << this->isDead() << endl;
-	cout << "----------------\n";
 }
 
 
