@@ -1,6 +1,8 @@
 #include <iostream>
 #include "map.h"
 
+  // Use references instead to avoid copying?
+
 using namespace std;
 
 /*
@@ -38,40 +40,36 @@ void unit_ptrC::operator=(unit_ptrC other_unit) {
   this->id = other_unit.id;
 }
 
-void unit_ptrC::setArmy(int army) {
-  this->army = army;
-}
-
-void unit_ptrC::setType(unitE type) {
-  this->type = type;
-}
-
-void unit_ptrC::setId(int id) {
-  this->id = id;
-}
-
-
-int unit_ptrC::getArmy() {
-  // Use references instead to avoid copying?
-  return this->army;
-}
 
 
 //// For mapC class ////
+ostream& operator<<(ostream& output, const overloadC& a) {
+  for(int i=0; i<MAP_WIDTH; i++) {
+    for(int j=0; j<MAP_HEIGHT; j++) {
+      output << a->board[i][j].getArmy() << "\t";
+    }
+    output << endl;
+  }
+
+  return output;
+}
 
 mapC::mapC() {
   for(int i=0; i<MAP_WIDTH; i++) {
     for(int j=0; j<MAP_HEIGHT; j++) {
-      unit_ptrC new_unit_ptr;
-      this->board[i][j] = new_unit_ptr;
+      this->board[i][j] = new unit_ptr;
+      // Or should this point to null and
+      // get pointed to a unit if there is one?
     }
   }
 }
 
 // This doesn't do what it seems it should do.
-// Also see cell_is_free() below
 unit_ptrC mapC::occupied(int x, int y) {
-  return this->board[x][y];
+  if(map[x][y]) { // if pointer at x,y is pointing to null
+    return 1;
+  }
+  return 0;
 }
 
 /*
@@ -90,13 +88,6 @@ int mapC::bordered_by(int, int, army) {
 }
 */
 
-bool mapC::cell_is_free(int x, int y) {
-  if(board[x][y].getArmy() == 0) {
-    return 1;
-  }
-  return 0;
-}
-
 void mapC::find_and_remove(unit_ptrC unit2move) {
   // COULD TAKE A LONG TIME FOR BIG MAPS!!!
   // TODO: optimize
@@ -114,22 +105,29 @@ void mapC::find_and_remove(unit_ptrC unit2move) {
 }
 
 int mapC::move(int x, int y, unit_ptrC unit2move) {
-  if(cell_is_free(x,y)) {
+  if(!occupied(x,y)) {
     find_and_remove(unit2move);
     place_on_map(x, y, unit2move);
   }
 }
 
-void mapC::place_on_map(int x, int y, unit_ptrC unit2move) {
+void mapC::place_on_map(int x, int y, unit_ptrC* unit2move) {
     this->board[x][y] = unit2move;
 }
 
-void mapC::print_map() {
-  for(int i=0; i<MAP_WIDTH; i++) {
-    for(int j=0; j<MAP_HEIGHT; j++) {
-      cout << this->board[i][j].getArmy() << "\t";
-    }
-    cout << endl;
-  }
+int unit_ptrC::getArmy() {
+  return this->army;
+}
+
+void unit_ptrC::setArmy(int army) {
+  this->army = army;
+}
+
+void unit_ptrC::setType(unitE type) {
+  this->type = type;
+}
+
+void unit_ptrC::setId(int id) {
+  this->id = id;
 }
 

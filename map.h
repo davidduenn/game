@@ -1,6 +1,8 @@
 #ifndef __MAP_H__
 #define __MAP_H__
 
+// Everything is x,y or width,height
+
 using namespace std;
 
 /*
@@ -18,6 +20,7 @@ using namespace std;
 #define MAP_WIDTH 10
 #define MAP_HEIGHT 10
 
+// Should this be defined here?
 enum unitE {
   empty,
   tank,
@@ -30,19 +33,10 @@ enum unitE {
 // Alternatively, there could be the same functions which the map owns.
 // If asked, the map could tell what was happening at any of it's spots.
 class unit_ptrC {
-  // Map uses this to keep track of units
-  // Map gives this data to an army to 
-  // access the unit
   public:
     unit_ptrC();
     bool operator==(unit_ptrC);
     void operator=(unit_ptrC);
-
-    void setArmy(int);
-    void setType(unitE);
-    void setId(int);
-
-    int getArmy();
 
   private:
     int army;
@@ -52,6 +46,9 @@ class unit_ptrC {
 
 class mapC {
   // A 2-D array of custom pointers to units
+
+  friend ostream& operator<<(ostream&, const mapC&);
+
   public:
     mapC();
     unit_ptrC occupied(int, int);
@@ -61,15 +58,19 @@ class mapC {
     */
 
     int move(int, int, unit_ptrC);
-    void place_on_map(int, int, unit_ptrC);
+    void place_on_map(int, int, unit_ptrC*);
+
+    int getArmy();
+
+    void setArmy(int);
+    void setType(unitE);
+    void setId(int);
 
     void print_map();
 
   private:
-    // Is the width/height supposed to be height/width?
     unit_ptrC board[MAP_WIDTH][MAP_HEIGHT];
 
-    bool cell_is_free(int, int);
     void find_and_remove(unit_ptrC);
 };
 
