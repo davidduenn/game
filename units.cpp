@@ -7,23 +7,12 @@ using namespace std;
 
 // print unit
 ostream& operator<<(ostream& output, unitC& a) {
-	output << "unit: " << a.name << " ------------\n";
 	output << "Nominal Speed: " << a.speed << endl;
 	output << "Real Speed: " << a.getSpeed() << endl;
 	output << "Health: " << a.getHealth() << endl;
 	output << "Dead: " << a.isDead() << endl;
 	output << "----------------\n";
   return output;
-}
-
-// Name
-// Probably not needed except for debugging
-void unitC::setName(string new_name) {
-	this->name = new_name;
-}
-
-string unitC::getName() {
-	return this->name;
 }
 
 
@@ -122,7 +111,7 @@ void unitC::operator=(unitC other_unit) {
 unitC::unitC() {
   setHealth(100);
   setName("default unit");
-  setSpeed(0);
+  setSpeed(1);
 }
 
 // Minigun constructor

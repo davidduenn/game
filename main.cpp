@@ -37,10 +37,10 @@ int main() {
 
   // Set units' types
   /* should already be set from constructor
-  */
   mini_inst_1->setType(mini);
   gren_inst_1->setType(gren);
   tank_inst_1->setType(tank);
+  */
 
   // Set units' IDs
   mini_inst_1->setId(28);

@@ -47,7 +47,6 @@ class unitC {
     void operator=(unitC);
 
 	private:
-		string name;
     int id;
 		int health;
 		int speed;
