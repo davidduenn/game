@@ -18,9 +18,11 @@ int main() {
   grenC* Regina = new grenC;
 
   // Print units
+  /*
   cout <<	*mini_inst_1 << endl;
   cout <<	*gren_inst_1 << endl;
   cout <<	*tank_inst_1 << endl;
+  */
 
   // Place units on map
   map_inst.place_on_map(1, 2, mini_inst_1);
@@ -35,14 +37,21 @@ int main() {
   Regina->setArmy(3);
 
   // Set units' IDs
-  mini_inst_1->setId(28);
-  gren_inst_1->setId(30);
-  tank_inst_1->setId(22);
+  mini_inst_1->setId(7);
+  gren_inst_1->setId(8);
+  tank_inst_1->setId(9);
 
   // Print Map
   cout << map_inst << endl;
 
-  // Effect
+  // Change Location
+  /*
+  map_inst.move(8, 7, mini_inst_1);
+  cout << map_inst << endl;
+  */
+
+  // Change Health
+  /*
 	gren_inst_1->incHealth(50);
   cout << *gren_inst_1 << endl;
 
@@ -51,10 +60,14 @@ int main() {
 
 	gren_inst_1->decHealth(100);
   cout << *gren_inst_1 << endl;
+  */
+
+
 
   delete mini_inst_1;
   delete gren_inst_1;
   delete tank_inst_1;
+  delete Regina;
 
 	return 0;
 }	

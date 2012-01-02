@@ -116,6 +116,7 @@ unitC::unitC() {
 miniC::miniC() {
   cout << "Constructing Mini+++\n";
   setType(mini);
+  setId(1);
 	setSpeed(10);
 }
 
@@ -123,6 +124,7 @@ miniC::miniC() {
 grenC::grenC() {
   cout << "Constructing Gren+++\n";
   setType(gren);
+  setId(2);
 	setSpeed(12);
 }
 
@@ -130,6 +132,7 @@ grenC::grenC() {
 tankC::tankC() {
   cout << "Constructing Tank+++\n";
   setType(tank);
+  setId(3);
 	setSpeed(20);
 }
 

@@ -16,10 +16,10 @@ using namespace std;
 
 //// For mapC class ////
 ostream& operator<<(ostream& output, mapC a) {
-  for(int x=0; x<MAP_WIDTH; x++) {
-    for(int y=0; y<MAP_HEIGHT; y++) {
+  for(int y=0; y<MAP_HEIGHT; y++) {
+    for(int x=0; x<MAP_WIDTH; x++) {
       if(a.occupied(x, y)) {
-        output << a.board[x][y]->getArmy() << "\t";
+        output << a.board[x][y]->getId() << "\t";
       } else {
         output << 0 << "\t";
       }
@@ -31,8 +31,8 @@ ostream& operator<<(ostream& output, mapC a) {
 }
 
 mapC::mapC() {
-  for(int x=0; x<MAP_WIDTH; x++) {
-    for(int y=0; y<MAP_HEIGHT; y++) {
+  for(int y=0; y<MAP_HEIGHT; y++) {
+    for(int x=0; x<MAP_WIDTH; x++) {
       this->board[x][y] = NULL;
     }
   }
@@ -60,13 +60,13 @@ int mapC::bordered_by(int, int, army) {
 }
 */
 
-void mapC::find_and_remove(unitC unit2move) {
+void mapC::find_and_remove(unitC* unit2move) {
   // COULD TAKE A LONG TIME FOR BIG MAPS!!!
   // TODO: optimize
   // Perhaps let the units remember their coordinates?
   for(int x=0; x<MAP_WIDTH; x++) {
     for(int y=0; y<MAP_HEIGHT; y++) {
-      if(this->board[x][y] == &unit2move) {
+      if(this->board[x][y] == unit2move) {
         this->board[x][y] = NULL;
       }
     }
@@ -74,13 +74,14 @@ void mapC::find_and_remove(unitC unit2move) {
 }
 
 int mapC::move(int x, int y, unitC* unit2move) {
-  if(occupied(x,y) != NULL) {
+  if(!occupied(x,y)) {
+    find_and_remove(unit2move);
     place_on_map(x, y, unit2move);
-    find_and_remove(*unit2move);
   }
 }
 
 void mapC::place_on_map(int x, int y, unitC* unit2move) {
+  cout << "<" << this->board[x][y] << " " << unit2move << ">" << endl;
   this->board[x][y] = unit2move;
 }
 
