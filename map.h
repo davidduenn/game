@@ -38,18 +38,11 @@ class mapC {
     int move(int, int, unitC);
     void place_on_map(int, int, unitC*);
 
-    int getArmy(int, int);
-    unitE getType(int, int);
-    int getId(int, int);
-
-    void setArmy(int, int, int);
-    void setType(int, int, unitE);
-    void setId(int, int, int);
 
   private:
-    unitC board[MAP_WIDTH][MAP_HEIGHT];
+    unitC* board[MAP_WIDTH][MAP_HEIGHT];
 
-    void find_and_remove(unitC);
+    void find_and_remove(unitC&);
 };
 
 #endif

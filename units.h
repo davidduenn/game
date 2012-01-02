@@ -34,6 +34,15 @@ class unitC {
 		void setSpeed(int);
 		int  getSpeed();
 
+    void setArmy(int);
+    int getArmy();
+
+    void setType(unitE);
+    unitE getType();
+
+    void setId(int);
+    int getId();
+
     bool operator==(unitC);
     void operator=(unitC);
 

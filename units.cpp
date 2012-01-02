@@ -74,6 +74,35 @@ int unitC::getSpeed() {
 	return (this->speed * this->getHealth() / 100);
 }
 
+
+// Army
+void unitC::setArmy(int army) {
+  this->army = army;
+}
+
+int unitC::getArmy() {
+  return this->army;
+}
+
+// Type
+void unitC::setType(unitE type) {
+  this->type = type;
+}
+
+unitE unitC::getType() {
+  return this->type;
+}
+
+// Id
+int unitC::getId() {
+  return this->id;
+}
+
+void unitC::setId(int id) {
+  this->id = id;
+}
+
+
 bool unitC::operator==(unitC other_unit) {
   // TODO: Use references instead to avoid copying?
   if(this->id == other_unit.id) {
