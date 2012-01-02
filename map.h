@@ -29,20 +29,20 @@ class mapC {
 
   public:
     mapC();
-    unitC occupied(int, int);
+    unitC* occupied(int, int);
     /*
      * Why is this needed?
     int bordered_by(int, int);
     */
 
-    int move(int, int, unitC);
+    int move(int, int, unitC*);
     void place_on_map(int, int, unitC*);
 
 
   private:
     unitC* board[MAP_WIDTH][MAP_HEIGHT];
 
-    void find_and_remove(unitC&);
+    void find_and_remove(unitC);
 };
 
 #endif
