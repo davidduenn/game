@@ -6,12 +6,12 @@ using namespace std;
 
 
 // print unit
-ostream& operator<<(ostream& output, const unitC& a) {
+ostream& operator<<(ostream& output, unitC& a) {
 	output << "unit: " << a.name << " ------------\n";
 	output << "Nominal Speed: " << a.speed << endl;
-	//output << "Real Speed: " << a.getSpeed() << endl;
-	//output << "Health: " << a.getHealth() << endl;
-	//output << "Dead: " << a.isDead() << endl;
+	output << "Real Speed: " << a.getSpeed() << endl;
+	output << "Health: " << a.getHealth() << endl;
+	output << "Dead: " << a.isDead() << endl;
 	output << "----------------\n";
   return output;
 }
@@ -72,6 +72,20 @@ void unitC::setSpeed(int new_speed) {
 
 int unitC::getSpeed() {
 	return (this->speed * this->getHealth() / 100);
+}
+
+bool unitC::operator==(unitC other_unit) {
+  // TODO: Use references instead to avoid copying?
+  if(this->id == other_unit.id) {
+    return 1;
+  }
+  return 0;
+}
+
+void unitC::operator=(unitC other_unit) {
+  this->army = other_unit.army;
+  this->type = other_unit.type;
+  this->id = other_unit.id;
 }
 
 

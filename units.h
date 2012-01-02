@@ -5,10 +5,20 @@ using namespace std;
 
 #include <string>
 
+
+enum unitE {
+  empty,
+  tank,
+  mini,
+  gren
+};
+
+
 // should the units know their coordinates on the map?
 class unitC {
+  friend class mapC;
 
-  friend ostream& operator<<(ostream&, const unitC&);
+  friend ostream& operator<<(ostream&, unitC&);
 
 	public:
     unitC();
@@ -24,13 +34,17 @@ class unitC {
 		void setSpeed(int);
 		int  getSpeed();
 
-		void printUnit();
+    bool operator==(unitC);
+    void operator=(unitC);
 
 	private:
 		string name;
+    int id;
 		int health;
 		int speed;
 		int firepower;
+    int army;
+    unitE type;
     //TODO: bool is_damagable (1 for regular. 0 for nature.)
 };
 

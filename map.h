@@ -22,19 +22,10 @@ using namespace std;
 #define MAP_WIDTH 10
 #define MAP_HEIGHT 10
 
-// Should this be defined here?
-enum unitE {
-  empty,
-  tank,
-  mini,
-  gren
-};
-
-
 class mapC {
   // A 2-D array of custom pointers to units
 
-  friend ostream& operator<<(ostream&, const mapC&);
+  friend ostream& operator<<(ostream&, mapC);
 
   public:
     mapC();
@@ -48,13 +39,12 @@ class mapC {
     void place_on_map(int, int, unitC*);
 
     int getArmy(int, int);
+    unitE getType(int, int);
+    int getId(int, int);
 
     void setArmy(int, int, int);
     void setType(int, int, unitE);
     void setId(int, int, int);
-
-    bool operator==(unitC);
-    //void operator=(unitC);
 
   private:
     unitC board[MAP_WIDTH][MAP_HEIGHT];

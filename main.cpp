@@ -46,13 +46,13 @@ int main() {
 
   // Effect
 	gren_inst_1->incHealth(50);
-	gren_inst_1->printUnit();
+  cout << gren_inst_1 << endl;
 
 	gren_inst_1->decHealth(10);
-	gren_inst_1->printUnit();
+  cout << gren_inst_1 << endl;
 
 	gren_inst_1->decHealth(100);
-	gren_inst_1->printUnit();
+  cout << gren_inst_1 << endl;
 
   delete mini_inst_1;
   delete gren_inst_1;

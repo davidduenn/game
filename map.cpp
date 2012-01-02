@@ -15,29 +15,10 @@ using namespace std;
 
 
 //// For mapC class ////
-bool mapC::operator==(unitC other_unit) {
-  // TODO: Use references instead to avoid copying?
-  if(this->id == other_unit.id) {
-    return 1;
-  }
-  return 0;
-}
-
-/*
- * Really need to copy units over eachother?
-void mapC::operator=(unitC other_unit) {
-  this->army = other_unit.army;
-  this->type = other_unit.type;
-  this->id = other_unit.id;
-}
-*/
-
-
-
-ostream& operator<<(ostream& output, const mapC& a) {
-  for(int i=0; i<MAP_WIDTH; i++) {
-    for(int j=0; j<MAP_HEIGHT; j++) {
-      output << a->board[i][j].getArmy() << "\t";
+ostream& operator<<(ostream& output, mapC a) {
+  for(int x=0; x<MAP_WIDTH; x++) {
+    for(int y=0; y<MAP_HEIGHT; y++) {
+      output << a.board[x][y].getArmy() << "\t";
     }
     output << endl;
   }
@@ -59,7 +40,7 @@ mapC::mapC() {
 unitC mapC::occupied(int x, int y) {
   // If(exists) {returns pointer to unit}
   // if(!exists) {returns pointer to NULL}
-  return map[x][y];
+  return this->board[x][y];
 }
 
 /*
@@ -81,42 +62,48 @@ int mapC::bordered_by(int, int, army) {
 void mapC::find_and_remove(unitC unit2move) {
   // COULD TAKE A LONG TIME FOR BIG MAPS!!!
   // TODO: optimize
-  // Perhaps let the armies remember where the units are
-  // so that they can tell the map where their unts are
-  // and there won't be any searching?
-  for(int i=0; i<MAP_WIDTH; i++) {
-    for(int j=0; j<MAP_HEIGHT; j++) {
-      if(this->board[i][j] == unit2move) {
-        this->board[i][j] = NULL;
+  // Perhaps let the units remember their coordinates?
+  for(int x=0; x<MAP_WIDTH; x++) {
+    for(int y=0; y<MAP_HEIGHT; y++) {
+      if(this->board[x][y] == unit2move) {
+        this->board[x][y] = NULL;
       }
     }
   }
 }
 
 int mapC::move(int x, int y, unitC unit2move) {
-  if(!occupied(x,y)) {
+  if(occupied(x,y) != NULL) {
     place_on_map(x, y, unit2move);
     find_and_remove(unit2move);
   }
 }
 
 void mapC::place_on_map(int x, int y, unitC* unit2move) {
-    this->board[x][y] = unit2move;
+  this->board[x][y] = unit2move;
 }
 
 int mapC::getArmy(int x, int y) {
-  return this->board[x][y]->army;
+  return this->board[x][y].army;
+}
+
+unitE mapC::getType(int x, int y) {
+  return this->board[x][y].type;
+}
+
+int mapC::getId(int x, int y) {
+  return this->board[x][y].id;
 }
 
 void mapC::setArmy(int x, int y, int army) {
-  this->board[x][y]->army = army;
+  this->board[x][y].army = army;
 }
 
 void mapC::setType(int x, int y, unitE type) {
-  this->board[x][y]->type = type;
+  this->board[x][y].type = type;
 }
 
 void mapC::setId(int x, int y, int id) {
-  this->board[x][y]->id = id;
+  this->board[x][y].id = id;
 }
 
