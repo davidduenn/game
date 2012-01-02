@@ -28,9 +28,6 @@ class unitC {
 		int  getHealth();
 		bool isDead();
 
-		void setName(string);
-		string getName();
-
 		void setSpeed(int);
 		int  getSpeed();
 

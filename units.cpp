@@ -106,32 +106,30 @@ void unitC::operator=(unitC other_unit) {
   this->id = other_unit.id;
 }
 
-
 // Unit constructor
 unitC::unitC() {
   setHealth(100);
-  setName("default unit");
   setSpeed(1);
 }
 
 // Minigun constructor
 miniC::miniC() {
   cout << "Constructing Mini+++\n";
-  setName("mini-gunner");
+  setType(mini);
 	setSpeed(10);
 }
 
 // Grenader constructor
 grenC::grenC() {
   cout << "Constructing Gren+++\n";
-  setName("grenader");
+  setType(gren);
 	setSpeed(12);
 }
 
 // Tank constructor
 tankC::tankC() {
   cout << "Constructing Tank+++\n";
-  setName("tank");
+  setType(tank);
 	setSpeed(20);
 }
 

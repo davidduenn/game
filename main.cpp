@@ -15,7 +15,7 @@ int main() {
   miniC* mini_inst_1 = new miniC;
   grenC* gren_inst_1 = new grenC;
   tankC* tank_inst_1 = new tankC;
-  grenC* Regina =new grenC;
+  grenC* Regina = new grenC;
 
   // Print units
   cout <<	*mini_inst_1 << endl;
@@ -33,14 +33,6 @@ int main() {
   gren_inst_1->setArmy(3);
   tank_inst_1->setArmy(2);
   Regina->setArmy(3);
-
-
-  // Set units' types
-  /* should already be set from constructor
-  mini_inst_1->setType(mini);
-  gren_inst_1->setType(gren);
-  tank_inst_1->setType(tank);
-  */
 
   // Set units' IDs
   mini_inst_1->setId(28);
