@@ -5,11 +5,12 @@
 
 using namespace std;
 
-//TODO: overload << operator instead of using print() functs.
-
 int main() {
   // Construct Map
   mapC map_inst;
+
+  // to set id's
+  int id = 0;
 
   // Construct units
   miniC* mini_inst_1 = new miniC;
@@ -37,18 +38,17 @@ int main() {
   Regina->setArmy(3);
 
   // Set units' IDs
-  mini_inst_1->setId(7);
-  gren_inst_1->setId(8);
-  tank_inst_1->setId(9);
+  mini_inst_1->setId(++id);
+  gren_inst_1->setId(++id);
+  tank_inst_1->setId(++id);
 
   // Print Map
   cout << map_inst << endl;
 
   // Change Location
-  /*
-  map_inst.move(8, 7, mini_inst_1);
+  map_inst.move(2, 2, mini_inst_1); // Can't go to 2,2 b/c gren occupies it
+  map_inst.move(3, 7, tank_inst_1); // Valid
   cout << map_inst << endl;
-  */
 
   // Change Health
   /*
@@ -61,8 +61,6 @@ int main() {
 	gren_inst_1->decHealth(100);
   cout << *gren_inst_1 << endl;
   */
-
-
 
   delete mini_inst_1;
   delete gren_inst_1;

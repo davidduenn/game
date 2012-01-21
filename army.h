@@ -1,15 +1,44 @@
 #ifndef __ARMY_H__
 #define __ARMY_H__
 
+#include <list>
 #include "units.h"
+
+struct mini_ptr_hldr {
+  miniC *miniC_ptr;
+  int id;
+};
+
+/*
+struct mini_ptr_hldr {
+  miniC *miniC_ptr;
+};
+
+struct mini_ptr_hldr {
+  miniC *miniC_ptr;
+};
+*/
 
 class armyC {
   public:
+    void add_mini(miniC*);
+    /*
+    void add_gren();
+    void add_tank();
+    */
+
+    void del_mini(int);
+    /*
+    void del_gren();
+    void del_tank();
+    */
+
   private:
-    //Arrays of the different types of units
-    miniC mini_array[];
-    grenC gren_array[];
-    tankC tank_array[];
+    list<mini_ptr_hldr> mini_list;
+    /*
+    list<grenC> gren_list;
+    list<tankC> tank_list;
+    */
 };
 
 #endif

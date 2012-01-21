@@ -81,7 +81,6 @@ int mapC::move(int x, int y, unitC* unit2move) {
 }
 
 void mapC::place_on_map(int x, int y, unitC* unit2move) {
-  cout << "<" << this->board[x][y] << " " << unit2move << ">" << endl;
   this->board[x][y] = unit2move;
 }
 
