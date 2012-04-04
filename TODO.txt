@@ -1,0 +1,2 @@
+I'm able to add units, mess around with them, and delete them just using the map and dealing with each instance individually.
+The next step is to move that functionality to the individualy armies.
