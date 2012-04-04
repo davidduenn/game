@@ -22,4 +22,4 @@ clean:
 	rm *.o
 
 nuke:
-	rm *.o game
+	rm *.o game oput.txt

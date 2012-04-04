@@ -6,6 +6,7 @@
 using namespace std;
 
 
+// Declarations-----------------------------
 class fooC {
 	public:
 		fooC();
@@ -16,6 +17,7 @@ class fooC {
 };
 
 
+// Definitions--------------------------------
 fooC::fooC() {
 	bar = 0;
 }
@@ -25,6 +27,7 @@ int fooC::get_bar() {
 }
 
 
+// main()------------------------------------
 int main() {
 	fooC baz;
   cout << baz.get_bar() << endl;

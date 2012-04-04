@@ -26,7 +26,6 @@ class mapC {
     int move(int, int, unitC*);
     void place_on_map(int, int, unitC*);
 
-
   private:
     unitC* board[MAP_WIDTH][MAP_HEIGHT];
 

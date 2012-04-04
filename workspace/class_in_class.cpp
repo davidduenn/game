@@ -1,8 +1,12 @@
 #include <iostream>
 /*
- * This main() creates a fooC which has
- * barC as a public member. The barC of
- * fooC is then used.
+ * two classes: fooC and barC
+ *  barC is a regular class
+ *  fooC has barC as a public member
+ * Declare a foo.
+ * Use a function in foo normally.
+ * Set a bar var using a bar function through foo.
+ * Get a bar var using a bar function through foo.
  */
 
 using namespace std;
@@ -21,8 +25,6 @@ class fooC {
 	public:
 		barC bar_inst;
 		void printNothing();
-	private:
-		int baz;
 };
 
 

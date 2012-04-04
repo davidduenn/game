@@ -1,12 +1,13 @@
 #include <iostream>
 #include "map.h"
 
-  // Use references instead to avoid copying?
+// Use references instead to avoid copying?
 
 using namespace std;
 
 /*
  *  army = 0: empty
+ *    but doesn't it point to null if it's empty?
  *  army = 1: nature
  *  army = 2: army 1
  *  army = 3: army 2

@@ -10,12 +10,14 @@ struct mini_ptr_hldr {
 };
 
 /*
-struct mini_ptr_hldr {
-  miniC *miniC_ptr;
+struct gren_ptr_hldr {
+  miniC *grenC_ptr;
+  int id;
 };
 
-struct mini_ptr_hldr {
-  miniC *miniC_ptr;
+struct tank_ptr_hldr {
+  miniC *tankC_ptr;
+  int id;
 };
 */
 
