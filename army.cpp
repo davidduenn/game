@@ -11,6 +11,9 @@ using namespace std;
  * The armies are just holders
  * In each army there will be one linked list for each unit type
  * The army's units will be in it's linked lists
+ *
+ * Do I want the armies to have some functionality?
+ * Should the map be messing with the unit internals or the armies?
  */
 
 void armyC::add_mini(miniC *my_inst) {
